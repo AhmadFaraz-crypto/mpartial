@@ -1,0 +1,24 @@
+.footer {
+    background: #0a5169;
+    padding: 20px 0;
+    p {
+        color: #fff;
+        opacity: .5;
+        font-size: 14px;
+        margin: 0;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        border-radius: 5px;
+        opacity: 1;
+        justify-content: flex-end;
+    }
+    .social-icon {
+        color: #fff;
+        opacity: .5;
+        font-size: 14px;
+    }
+}
