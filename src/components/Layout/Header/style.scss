@@ -11,6 +11,27 @@
         height: auto;
         z-index: 999999999999;
         border-bottom: 1px solid hsla(0,0%,100%,.5);
+        .scrolled{
+            box-shadow: 0 1px 4px #bababa;
+            background-color: #ffffff;
+            .main-navbar {
+                margin-left: auto;
+                align-items: center;
+                .nav-item a {
+                    cursor: pointer;
+                    text-align: center;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 32px;
+                    letter-spacing: 0;
+                    color: #000;
+                    opacity: 1;
+                }
+                .nav-item a:hover {
+                    color: #3ac280;
+                }
+            }
+          }
         .martial-logo {
             display: inline-block;
             padding-top: .3125rem;

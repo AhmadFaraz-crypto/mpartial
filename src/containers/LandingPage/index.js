@@ -7,7 +7,6 @@ import Footer from '../../components/Layout/Footer';
 import Button from '../../components/styledComponents/Button';
 import Slider from '../../components/Slider';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
-import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 import { MdInfoOutline } from 'react-icons/md';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -17,12 +16,9 @@ import PreMigration from '../../assets/images/pre_migrations.jpeg';
 import FirstSketch from '../../assets/images/first_sketch.png';
 import SecondSketch from '../../assets/images/second_sketch.png';
 import Handle from '../../assets/images/handle.png';
-import Page1 from '../../assets/images/page_1.jpeg';
-import Page2 from '../../assets/images/page_2.jpeg';
-import Page3 from '../../assets/images/page_3.jpeg';
-import Page4 from '../../assets/images/page_4.jpeg';
-import Page5 from '../../assets/images/page_5.jpeg';
-import Page6 from '../../assets/images/page_6.jpeg';
+
+//constants
+import { dataPoints, pages, TrailPlan, Enterprise } from './constants';
 
 //styles
 import './style.scss';
@@ -50,20 +46,6 @@ const MyCustomHandle = () => (
 )
 
 const LandingPage = () => {
-    const handleLeftArrow = () => (
-        <>
-            <a className="carousel-control-prev">
-                <span className="carousel-control-prev-icon"></span>
-            </a>
-        </>
-    );
-
-    const handleRightArrow = () => (
-        <a className="carousel-control-next">
-            <span className="carousel-control-next-icon"></span>
-        </a>
-    );
-
     return (
         <>
             <div>
@@ -110,36 +92,18 @@ const LandingPage = () => {
                             </Row>
                             <div className="data-points">
                                 <Row className="ml-auto mr-auto">
-                                    <Col md={4} sm={12}>
-                                        <Row className="data-points-item ml-auto mr-auto">
-                                            <Col md={4} sm={12} className="data-number">
-                                                <span>1</span>
-                                            </Col>
-                                            <Col md={8} sm={12}>
-                                                <span className="data-text">Perform pre-mitigation and post-mitigation scans with a Matterport Pro Series camera.</span>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col md={4} sm={12}>
-                                        <Row className="data-points-item ml-auto mr-auto">
-                                            <Col md={4} sm={12} className="data-number">
-                                                <span>2</span>
-                                            </Col>
-                                            <Col md={8} sm={12}>
-                                                <span className="data-text">Submit the Matterport scans via the mpartial portal and then go back to what you do great.</span>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col md={4} sm={12}>
-                                        <Row className="data-points-item ml-auto mr-auto">
-                                            <Col md={4} sm={12} className="data-number">
-                                                <span>3</span>
-                                            </Col>
-                                            <Col md={8} sm={12}>
-                                                <span className="data-text">Receive a well-formatted, fully documented Xactimate PDF, ESX & Matterport TruePlan SKX.</span>
-                                            </Col>
-                                        </Row>
-                                    </Col>
+                                    {dataPoints.map((item, index) =>
+                                        <Col key={index} md={4} sm={12}>
+                                            <Row className="data-points-item ml-auto mr-auto">
+                                                <Col md={4} sm={12} className="data-number">
+                                                    <span>{item.id}</span>
+                                                </Col>
+                                                <Col md={8} sm={12}>
+                                                    <span className="data-text">{item.text}</span>
+                                                </Col>
+                                            </Row>
+                                        </Col> 
+                                    )}
                                 </Row>
                             </div>
                             <div className="get-btn">
@@ -174,14 +138,12 @@ const LandingPage = () => {
                                         <div className="body text-center">
                                             <h4>7.50%</h4>
                                             <div style={{ height: '150px' }}>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Access to mpartial engine</span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Minimum $750 initial deposit</span>
-                                                </div>
+                                                {TrailPlan.map((item, index) => 
+                                                    <div key={index} className="d-flex align-items-center mb-1">
+                                                        {item.icon}
+                                                        <span className="ml-2">{item.text}</span>
+                                                    </div>
+                                                )}
                                             </div>
                                             <h4 style={{ fontSize: '30px' }}>Free</h4>
                                         </div>
@@ -190,7 +152,7 @@ const LandingPage = () => {
                                 <Col lg={5}>
                                     <div className="fee-box">
                                         <div className="header" style={{ background: 'rgb(10, 81, 105)' }}>
-                                            <span> Trial Plan</span>
+                                            <span> Enterprise Plan</span>
                                             <div>
                                                 <MdInfoOutline className="info-icon" />
                                             </div>
@@ -198,30 +160,12 @@ const LandingPage = () => {
                                         <div className="body text-center">
                                             <h4>7.50%</h4>
                                             <div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Access to mpartial engine</span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Discounted fee schedule</span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Unlimited collaborators </span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Dedicated account manager</span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Prioritized turnaround time</span>
-                                                </div>
-                                                <div className="d-flex align-items-center mb-1">
-                                                    <IoIosCheckmarkCircleOutline className="check-circle" />
-                                                    <span className="ml-2">Minimum $750 initial deposit</span>
-                                                </div>
+                                                {Enterprise.map((item, index) => 
+                                                    <div key={index} className="d-flex align-items-center mb-1">
+                                                        {item.icon}
+                                                        <span className="ml-2">{item.text}</span>
+                                                    </div>
+                                                )}
                                             </div>
                                             <h4 style={{ fontSize: '30px' }}>Free</h4>
                                         </div>
@@ -267,24 +211,15 @@ const LandingPage = () => {
                                     (<a className="carousel-control-next" onClick={clickHandler}>
                                         <span className="carousel-control-next-icon"></span>
                                     </a>)}>
-                                    <div>
-                                        <img src={Page1} />
+                                    {pages && pages.map((page, index) => 
+                                    {
+                                        console.log('pages', pages)
+                                        return (
+                                            <div key={index}>
+                                        <img src={page.image} />
                                     </div>
-                                    <div>
-                                        <img src={Page2} />
-                                    </div>
-                                    <div>
-                                        <img src={Page3} />
-                                    </div>
-                                    <div>
-                                        <img src={Page4} />
-                                    </div>
-                                    <div>
-                                        <img src={Page5} />
-                                    </div>
-                                    <div>
-                                        <img src={Page6} />
-                                    </div>
+                                        )
+                                    })}
                                 </Carousel>
                             </div>
                             <h3 className="mt-5">MATTERPORT TRUEPLAN™ FOR XACTIMATE™</h3>
